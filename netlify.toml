@@ -1,7 +1,7 @@
 # Netlify configuration for ISR test
 
 [build]
-  command = "pnpm build"
+  command = "cargo --version"
   # publish = ".output/public"
 
 [build.environment]
