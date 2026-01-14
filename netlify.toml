@@ -1,0 +1,23 @@
+# Netlify configuration for ISR test
+
+[build]
+  command = "pnpm build"
+  # publish = ".output/public"
+
+[build.environment]
+  NODE_VERSION = "22.19.0"
+  PNPM_FLAGS = "--frozen-lockfile"
+  # ISR TTL in seconds (default: 120)
+  ISR_TIME_SECONDS = "120"
+
+[dev]
+  command = "pnpm dev"
+  port = 3001
+  targetPort = 3000
+  autoLaunch = false
+
+# Optional: Add custom headers for debugging
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Custom-ISR-Test = "true"
