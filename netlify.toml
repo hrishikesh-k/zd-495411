@@ -1,7 +1,7 @@
 # Netlify configuration for ISR test
 
 [build]
-  command = "cargo --version"
+  command = "rustup default stable"
   # publish = ".output/public"
 
 [build.environment]
