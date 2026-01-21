@@ -1,7 +1,7 @@
 # Netlify configuration for ISR test
 
 [build]
-  command = "rustup default stable && cargo install wasm-pack && wasm-pack build ./key_bnc_wasm --target web"
+  command = "pnpm build"
   # publish = ".output/public"
 
 [build.environment]

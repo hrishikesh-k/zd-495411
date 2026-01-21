@@ -21,7 +21,11 @@ export default defineNuxtConfig({
     },
     // Test with different TTL
     '/test-page-short': {
-      isr: 30, // 30 seconds
+      isr: 30,
+      cache: {
+        maxAge: 30,
+        staleMaxAge: 30,
+      }
     },
   },
 

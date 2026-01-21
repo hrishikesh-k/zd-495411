@@ -45,10 +45,11 @@ export default defineNitroPlugin((nitroApp) => {
       setResponseHeader(event, 'Set-Cookie', 'appCookie=1; Path=/;')
       setResponseHeader(event, 'set-Cookie', 'appCookie=1; Path=/;')
 
-      console.log('Netlify-caching: Vérifier si route rule est ISR')
+      console.log('Netlify-caching: Vérifier si route rule est ISR', routeRules)
 
       if (routeRules?.isr) {
-        const { staleMaxAge, maxAge } = routeRules.cache as CacheOptions
+        const { staleMaxAge, maxAge } = (routeRules.cache || {}) as CacheOptions 
+        // prod has const { staleMaxAge, maxAge } = routeRules.cache as CacheOptions (which fails)
         const headerMaxAge = (maxAge ?? routeRules.isr === true) ? 0 : routeRules.isr
         const headerStaleMaxAge = staleMaxAge === -1 ? maxStaleAge : (staleMaxAge ?? defaultStaleMaxAgeSeconds)
 
